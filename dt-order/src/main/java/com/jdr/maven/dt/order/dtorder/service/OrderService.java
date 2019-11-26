@@ -35,6 +35,19 @@ public class OrderService {
         updateStock(order);
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    public void shoppingRollback(int orderId) {
+        System.out.println("============删除订单");
+        orderRepository.delete(orderId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void shoppingCommit(int orderId) {
+        OrderEntity order = orderRepository.findOne(orderId);
+        order.setStatus(OrderStatusEnum.SUCCESS.toString());
+        orderRepository.save(order);
+    }
+
     private OrderEntity saveOrder(int stockId, int number) throws IOException, TimeoutException {
         OrderEntity order = new OrderEntity();
         order.setStockId(stockId);
@@ -45,7 +58,7 @@ public class OrderService {
         return order;
     }
 
-    private void sendUpdateStockMq(OrderEntity order) throws IOException, TimeoutException {
+    private void updateStock(OrderEntity order) throws IOException, TimeoutException {
         // 提交订单成功后
         Channel channel = rabbitMqUtils.getConnection().createChannel();
         try {
@@ -60,9 +73,5 @@ public class OrderService {
             // 异常继续抛，回滚本地事务
             throw e;
         }
-    }
-
-    private void updateStock(OrderEntity order) throws IOException, TimeoutException {
-        sendUpdateStockMq(order);
     }
 }

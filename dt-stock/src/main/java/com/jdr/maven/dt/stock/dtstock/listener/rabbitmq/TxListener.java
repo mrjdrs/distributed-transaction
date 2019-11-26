@@ -25,7 +25,6 @@ public class TxListener {
     @RabbitHandler
     public void process(String body, Channel channel, Message message) throws Exception {
         JSONObject obj = new JSONObject(body);
-
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setId(obj.getInt("id"));
         orderEntity.setStockId(obj.getInt("stockId"));
