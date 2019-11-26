@@ -1,4 +1,4 @@
-package com.jdr.maven.dt.common.entity;
+package com.jdr.maven.dt.order.dtorder.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -19,11 +22,13 @@ import javax.persistence.Table;
 @Data
 public class OrderEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "stoke_id")
-    private Integer stokeId;
+    @Column(name = "stock_id")
+    private Integer stockId;
 
     @Column(name = "customer")
     private String customer;
@@ -32,5 +37,5 @@ public class OrderEntity {
     private Integer number;
 
     @Column(name = "status")
-    private Integer status;
+    private String status;
 }

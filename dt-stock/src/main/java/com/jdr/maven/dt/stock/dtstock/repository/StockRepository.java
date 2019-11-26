@@ -1,6 +1,6 @@
-package com.jdr.maven.dt.common.repository;
+package com.jdr.maven.dt.stock.dtstock.repository;
 
-import com.jdr.maven.dt.common.entity.StockEntity;
+import com.jdr.maven.dt.stock.dtstock.entity.StockEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

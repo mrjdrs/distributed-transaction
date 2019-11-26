@@ -1,6 +1,6 @@
-package com.jdr.maven.dt.common.repository;
+package com.jdr.maven.dt.order.dtorder.repository;
 
-import com.jdr.maven.dt.common.entity.OrderEntity;
+import com.jdr.maven.dt.order.dtorder.entity.OrderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
