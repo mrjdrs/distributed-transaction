@@ -1,3 +1,11 @@
+DROP TABLE IF EXISTS `t_stoke`;
+CREATE TABLE `t_stoke` (
+  `id` int(11) NOT NULL,
+  `product_name` varchar(100) DEFAULT NULL,
+  `count` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 INSERT INTO `t_stoke` VALUES ('1001', '黑色皮鞭', '100');
 INSERT INTO `t_stoke` VALUES ('1002', '红蜡烛', '100');
 INSERT INTO `t_stoke` VALUES ('1003', '杜蕾斯54mm', '100');
